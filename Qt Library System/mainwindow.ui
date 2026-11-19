@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1080</width><height>700</height></rect>
+  </property>
+  <property name="minimumSize">
+   <size><width>920</width><height>620</height></size>
+  </property>
+  <property name="windowTitle">
+   <string>Library Management System</string>
+  </property>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CENTRAL WIDGET — VBoxLayout: [header strip] [tab widget]
+       ═══════════════════════════════════════════════════════════ -->
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+
+    <!-- ─────────────────────────────────────────────────────────
+         HEADER STRIP  (dark navy bar above the tabs)
+         ───────────────────────────────────────────────────────── -->
+    <item>
+     <widget class="QWidget" name="appHeader">
+      <property name="minimumSize">
+       <size><width>0</width><height>52</height></size>
+      </property>
+      <property name="maximumSize">
+       <size><width>16777215</width><height>52</height></size>
+      </property>
+      <layout class="QHBoxLayout" name="headerLayout">
+       <property name="leftMargin"><number>20</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>20</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <property name="spacing"><number>10</number></property>
+       <item>
+        <widget class="QLabel" name="appTitle">
+         <property name="text"><string>Library Management System</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="appDivider">
+         <property name="text"><string>|</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="appSubtitle">
+         <property name="text"><string>City Public Library</string></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="headerSpacer">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         <property name="sizeHint" stdset="0">
+          <size><width>40</width><height>20</height></size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="headerBadge">
+         <property name="text"><string>  C++ Qt OOP Project  </string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ─────────────────────────────────────────────────────────
+         TAB WIDGET  (fills all remaining height)
+         ───────────────────────────────────────────────────────── -->
+    <item>
+     <widget class="QTabWidget" name="tabs">
+
+      <!-- ═══════════════════════════════════════════════════════
+           TAB 1 — BOOKS
+           ═══════════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="booksTab">
+       <attribute name="title"><string>  Books  </string></attribute>
+       <layout class="QVBoxLayout" name="booksLayout">
+        <property name="spacing"><number>12</number></property>
+        <property name="leftMargin"><number>16</number></property>
+        <property name="topMargin"><number>16</number></property>
+        <property name="rightMargin"><number>16</number></property>
+        <property name="bottomMargin"><number>12</number></property>
+
+        <!-- Search group -->
+        <item>
+         <widget class="QGroupBox" name="searchGroup">
+          <property name="title"><string>Search Books</string></property>
+          <layout class="QHBoxLayout" name="searchLayout">
+           <property name="leftMargin"><number>12</number></property>
+           <property name="topMargin"><number>6</number></property>
+           <property name="rightMargin"><number>12</number></property>
+           <property name="bottomMargin"><number>12</number></property>
+           <property name="spacing"><number>8</number></property>
+           <item>
+            <widget class="QLabel" name="searchLabel">
+             <property name="text"><string>Search by:</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="searchType">
+             <property name="minimumSize">
+              <size><width>110</width><height>0</height></size>
+             </property>
+             <property name="maximumSize">
+              <size><width>110</width><height>16777215</height></size>
+             </property>
+             <item><property name="text"><string>Title</string></property></item>
+             <item><property name="text"><string>Author</string></property></item>
+             <item><property name="text"><string>ISBN</string></property></item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="searchBox">
+             <property name="minimumSize">
+              <size><width>0</width><height>34</height></size>
+             </property>
+             <property name="placeholderText">
+              <string>Type a title, author, or ISBN and press Search...</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="searchBtn">
+             <property name="text"><string>Search</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="showAllBtn">
+             <property name="text"><string>Show All</string></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Books table (7 columns) -->
+        <item>
+         <widget class="QTableWidget" name="booksTable">
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="showGrid"><bool>false</bool></property>
+          <property name="columnCount"><number>7</number></property>
+          <attribute name="verticalHeaderVisible"><bool>false</bool></attribute>
+          <attribute name="horizontalHeaderStretchLastSection"><bool>false</bool></attribute>
+          <column><property name="text"><string>Title</string></property></column>
+          <column><property name="text"><string>Author</string></property></column>
+          <column><property name="text"><string>ISBN</string></property></column>
+          <column><property name="text"><string>Year</string></property></column>
+          <column><property name="text"><string>Type</string></property></column>
+          <column><property name="text"><string>Genre / Subject</string></property></column>
+          <column><property name="text"><string>Status</string></property></column>
+         </widget>
+        </item>
+
+        <!-- Bottom bar: count label + buttons -->
+        <item>
+         <layout class="QHBoxLayout" name="booksBottomBar">
+          <item>
+           <widget class="QLabel" name="bookCountLabel">
+            <property name="text"><string>0 books</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="booksBottomSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0">
+             <size><width>40</width><height>20</height></size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="addBookBtn">
+            <property name="text"><string>+ Add Book</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="removeBookBtn">
+            <property name="text"><string>Remove Selected</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+       </layout>
+      </widget><!-- end booksTab -->
+
+      <!-- ═══════════════════════════════════════════════════════
+           TAB 2 — BORROW / RETURN
+           ═══════════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="borrowTab">
+       <attribute name="title"><string>  Borrow / Return  </string></attribute>
+       <layout class="QVBoxLayout" name="borrowLayout">
+        <property name="spacing"><number>12</number></property>
+        <property name="leftMargin"><number>16</number></property>
+        <property name="topMargin"><number>16</number></property>
+        <property name="rightMargin"><number>16</number></property>
+        <property name="bottomMargin"><number>12</number></property>
+
+        <!-- User selection group -->
+        <item>
+         <widget class="QGroupBox" name="userGroup">
+          <property name="title"><string>Active Library Member</string></property>
+          <layout class="QHBoxLayout" name="userGroupLayout">
+           <property name="leftMargin"><number>12</number></property>
+           <property name="topMargin"><number>6</number></property>
+           <property name="rightMargin"><number>12</number></property>
+           <property name="bottomMargin"><number>12</number></property>
+           <item>
+            <widget class="QLabel" name="userLabel">
+             <property name="text"><string>Select member:</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="userSelector">
+             <property name="minimumSize">
+              <size><width>220</width><height>32</height></size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="borrowInfoLabel">
+             <property name="text"><string>No member selected</string></property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="userGroupSpacer">
+             <property name="orientation"><enum>Qt::Horizontal</enum></property>
+             <property name="sizeHint" stdset="0">
+              <size><width>40</width><height>20</height></size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Two panels side-by-side -->
+        <item>
+         <layout class="QHBoxLayout" name="borrowMiddleRow">
+          <property name="spacing"><number>12</number></property>
+
+          <!-- Left: available books -->
+          <item>
+           <widget class="QGroupBox" name="availGroup">
+            <property name="title">
+             <string>Available Books  (double-click or press Borrow)</string>
+            </property>
+            <layout class="QVBoxLayout" name="availLayout">
+             <property name="leftMargin"><number>10</number></property>
+             <property name="topMargin"><number>6</number></property>
+             <property name="rightMargin"><number>10</number></property>
+             <property name="bottomMargin"><number>10</number></property>
+             <item>
+              <widget class="QTableWidget" name="availableTable">
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="alternatingRowColors"><bool>true</bool></property>
+               <property name="showGrid"><bool>false</bool></property>
+               <property name="columnCount"><number>5</number></property>
+               <attribute name="verticalHeaderVisible"><bool>false</bool></attribute>
+               <column><property name="text"><string>Title</string></property></column>
+               <column><property name="text"><string>Author</string></property></column>
+               <column><property name="text"><string>ISBN</string></property></column>
+               <column><property name="text"><string>Year</string></property></column>
+               <column><property name="text"><string>Type</string></property></column>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="borrowBtn">
+               <property name="text"><string>Borrow Selected Book</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+          <!-- Right: borrowed books -->
+          <item>
+           <widget class="QGroupBox" name="borrowedGroup">
+            <property name="title">
+             <string>My Borrowed Books  (double-click or press Return)</string>
+            </property>
+            <layout class="QVBoxLayout" name="borrowedLayout">
+             <property name="leftMargin"><number>10</number></property>
+             <property name="topMargin"><number>6</number></property>
+             <property name="rightMargin"><number>10</number></property>
+             <property name="bottomMargin"><number>10</number></property>
+             <item>
+              <widget class="QTableWidget" name="borrowedTable">
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="alternatingRowColors"><bool>true</bool></property>
+               <property name="showGrid"><bool>false</bool></property>
+               <property name="columnCount"><number>4</number></property>
+               <attribute name="verticalHeaderVisible"><bool>false</bool></attribute>
+               <column><property name="text"><string>Title</string></property></column>
+               <column><property name="text"><string>Author</string></property></column>
+               <column><property name="text"><string>ISBN</string></property></column>
+               <column><property name="text"><string>Year</string></property></column>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="returnBtn">
+               <property name="text"><string>Return Selected Book</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+         </layout>
+        </item>
+
+       </layout>
+      </widget><!-- end borrowTab -->
+
+      <!-- ═══════════════════════════════════════════════════════
+           TAB 3 — MEMBERS
+           ═══════════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="membersTab">
+       <attribute name="title"><string>  Members  </string></attribute>
+       <layout class="QVBoxLayout" name="membersLayout">
+        <property name="spacing"><number>12</number></property>
+        <property name="leftMargin"><number>16</number></property>
+        <property name="topMargin"><number>16</number></property>
+        <property name="rightMargin"><number>16</number></property>
+        <property name="bottomMargin"><number>12</number></property>
+        <item>
+         <widget class="QLabel" name="sectionInfoLabel">
+          <property name="text"><string>All registered library members:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="usersTable">
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="showGrid"><bool>false</bool></property>
+          <property name="columnCount"><number>5</number></property>
+          <attribute name="verticalHeaderVisible"><bool>false</bool></attribute>
+          <column><property name="text"><string>User ID</string></property></column>
+          <column><property name="text"><string>Name</string></property></column>
+          <column><property name="text"><string>Role</string></property></column>
+          <column><property name="text"><string>Books Borrowed</string></property></column>
+          <column><property name="text"><string>Borrow Limit</string></property></column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="membersBottomBar">
+          <item>
+           <spacer name="membersSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0">
+             <size><width>40</width><height>20</height></size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="addUserBtn">
+            <property name="text"><string>+ Add Member</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="removeUserBtn">
+            <property name="text"><string>Remove Selected</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget><!-- end membersTab -->
+
+      <!-- ═══════════════════════════════════════════════════════
+           TAB 4 — STATISTICS
+           ═══════════════════════════════════════════════════════ -->
+      <widget class="QWidget" name="statsTab">
+       <attribute name="title"><string>  Statistics  </string></attribute>
+       <layout class="QVBoxLayout" name="statsLayout">
+        <property name="spacing"><number>16</number></property>
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>18</number></property>
+        <property name="rightMargin"><number>20</number></property>
+        <property name="bottomMargin"><number>20</number></property>
+
+        <!-- Heading -->
+        <item>
+         <widget class="QLabel" name="dashHeading">
+          <property name="text"><string>Library Dashboard</string></property>
+         </widget>
+        </item>
+
+        <!-- 2×2 grid of stat cards -->
+        <item>
+         <layout class="QGridLayout" name="statsGrid">
+          <property name="spacing"><number>12</number></property>
+
+          <!-- Card 1 — Total Books -->
+          <item row="0" column="0">
+           <widget class="QFrame" name="statBooksCard">
+            <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+            <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+            <layout class="QVBoxLayout" name="statBooksCardLayout">
+             <property name="spacing"><number>4</number></property>
+             <property name="leftMargin"><number>20</number></property>
+             <property name="topMargin"><number>16</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="bottomMargin"><number>16</number></property>
+             <item>
+              <widget class="QLabel" name="statBooks">
+               <property name="text"><string>—</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="statBooksDesc">
+               <property name="text"><string>Total Books in Catalogue</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+          <!-- Card 2 — Available -->
+          <item row="0" column="1">
+           <widget class="QFrame" name="statAvailableCard">
+            <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+            <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+            <layout class="QVBoxLayout" name="statAvailableCardLayout">
+             <property name="spacing"><number>4</number></property>
+             <property name="leftMargin"><number>20</number></property>
+             <property name="topMargin"><number>16</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="bottomMargin"><number>16</number></property>
+             <item>
+              <widget class="QLabel" name="statAvailable">
+               <property name="text"><string>—</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="statAvailableDesc">
+               <property name="text"><string>Books Available to Borrow</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+          <!-- Card 3 — Members -->
+          <item row="1" column="0">
+           <widget class="QFrame" name="statUsersCard">
+            <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+            <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+            <layout class="QVBoxLayout" name="statUsersCardLayout">
+             <property name="spacing"><number>4</number></property>
+             <property name="leftMargin"><number>20</number></property>
+             <property name="topMargin"><number>16</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="bottomMargin"><number>16</number></property>
+             <item>
+              <widget class="QLabel" name="statUsers">
+               <property name="text"><string>—</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="statUsersDesc">
+               <property name="text"><string>Registered Members</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+          <!-- Card 4 — Total Borrows -->
+          <item row="1" column="1">
+           <widget class="QFrame" name="statBorrowsCard">
+            <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+            <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+            <layout class="QVBoxLayout" name="statBorrowsCardLayout">
+             <property name="spacing"><number>4</number></property>
+             <property name="leftMargin"><number>20</number></property>
+             <property name="topMargin"><number>16</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="bottomMargin"><number>16</number></property>
+             <item>
+              <widget class="QLabel" name="statBorrows">
+               <property name="text"><string>—</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="statBorrowsDesc">
+               <property name="text"><string>Total Borrows All-Time</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+         </layout>
+        </item><!-- end stats grid -->
+
+        <!-- OOP Concept group box -->
+        <item>
+         <widget class="QGroupBox" name="conceptBox">
+          <property name="title"><string>OOP Concept: Static Member Variable</string></property>
+          <layout class="QVBoxLayout" name="conceptLayout">
+           <property name="leftMargin"><number>14</number></property>
+           <property name="topMargin"><number>8</number></property>
+           <property name="rightMargin"><number>14</number></property>
+           <property name="bottomMargin"><number>14</number></property>
+           <property name="spacing"><number>8</number></property>
+           <item>
+            <layout class="QHBoxLayout" name="staticRow">
+             <item>
+              <widget class="QLabel" name="conceptLabel">
+               <property name="text">
+                <string>Book objects in memory right now  (Book::bookCount):</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="statBookObjects">
+               <property name="text"><string>—</string></property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="conceptSpacer">
+               <property name="orientation"><enum>Qt::Horizontal</enum></property>
+               <property name="sizeHint" stdset="0">
+                <size><width>40</width><height>20</height></size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="conceptExplanation">
+             <property name="text">
+              <string>A static member belongs to the class itself, not to any single object.
+Book::bookCount increments in the Book constructor and decrements in the destructor.
+You can read it without creating a Book instance:   Book::getBookCount()</string>
+             </property>
+             <property name="wordWrap"><bool>true</bool></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Push everything up -->
+        <item>
+         <spacer name="statsBottomSpacer">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0">
+           <size><width>20</width><height>40</height></size>
+          </property>
+         </spacer>
+        </item>
+
+       </layout>
+      </widget><!-- end statsTab -->
+
+     </widget><!-- end QTabWidget -->
+    </item>
+
+   </layout>
+  </widget><!-- end centralwidget -->
+
+  <!-- Menu bar and status bar (populated in C++) -->
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect><x>0</x><y>0</y><width>1080</width><height>22</height></rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

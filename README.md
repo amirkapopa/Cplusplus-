@@ -2,9 +2,10 @@
 
 C++ coursework and practice by Amir Pulatov (INHA University Tashkent, CSE).
 
-| File / folder | What it is |
+| Folder / file | What it is |
 |---|---|
-| [C++ ATM machine](C%2B%2B%20ATM%20machine) | Console ATM simulation (class in `ATM.h` / `ATM.cpp`) |
-| [U2510164(DS-Assig2).cpp](U2510164(DS-Assig2).cpp) | Data Structures assignment 2 |
-| [Linked Lists](Linked%20Lists) | Data Structures practice: singly linked list (commented out) and a doubly linked list in progress |
+| [Qt Library System](Qt%20Library%20System) | Qt Widgets desktop app: library management with books, members, file storage and custom exceptions (build with `qmake` or `build.sh`) |
+| [OOP Labs](OOP%20Labs) | Object-oriented programming labs: Book class, stock exchange, Person/Student/Teacher/Staff inheritance, hospital management (abstract classes, polymorphism), Employee |
+| [Data Structures](Data%20Structures) | Data Structures assignments 1–2 and linked-list practice |
+| [C++ ATM machine](C%2B%2B%20ATM%20machine) | Console ATM simulation |
 | [deci_roll.cpp](deci_roll.cpp) | Dice-roll program |
